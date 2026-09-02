@@ -1,11 +1,11 @@
-package com.jiandong.mail_chainflow.config;
+package com.jiandong.legendaryai.config;
 
 import java.io.IOException;
 import java.util.function.Function;
 
-import com.jiandong.mail_chainflow.agent.AgentContext;
-import com.jiandong.mail_chainflow.agent.MailAgents;
-import com.jiandong.mail_chainflow.parser.MimeMessageParser;
+import com.jiandong.legendaryai.agent.AgentContext;
+import com.jiandong.legendaryai.agent.MailAgents;
+import com.jiandong.legendaryai.parser.MimeMessageParser;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;

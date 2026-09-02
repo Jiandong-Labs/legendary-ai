@@ -1,4 +1,4 @@
-package com.jiandong.mail_chainflow.agent;
+package com.jiandong.legendaryai.agent;
 
 public record ClassifierResult(boolean isSupportTicket, String category) {
 }

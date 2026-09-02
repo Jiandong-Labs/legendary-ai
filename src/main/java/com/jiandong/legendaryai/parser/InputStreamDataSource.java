@@ -1,4 +1,4 @@
-package com.jiandong.mail_chainflow.parser;
+package com.jiandong.legendaryai.parser;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more

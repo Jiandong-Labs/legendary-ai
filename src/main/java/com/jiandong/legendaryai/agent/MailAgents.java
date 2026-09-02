@@ -1,4 +1,4 @@
-package com.jiandong.mail_chainflow.agent;
+package com.jiandong.legendaryai.agent;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.converter.BeanOutputConverter;

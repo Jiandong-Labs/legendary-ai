@@ -1,13 +1,13 @@
-package com.jiandong.mail_chainflow;
+package com.jiandong.legendaryai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MailChainflowApplication {
+public class LegendaryAiApplication {
 
 	static void main(String[] args) {
-		SpringApplication.run(MailChainflowApplication.class, args);
+		SpringApplication.run(LegendaryAiApplication.class, args);
 	}
 
 }
