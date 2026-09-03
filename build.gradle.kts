@@ -28,6 +28,7 @@ dependencies {
     implementation("org.springframework.ai:spring-ai-starter-model-deepseek")
     testImplementation("org.springframework.boot:spring-boot-starter-mail-test")
     testImplementation("org.springframework.integration:spring-integration-test")
+    testImplementation("com.icegreen:greenmail:2.1.13")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

@@ -26,18 +26,31 @@ class MailAgentFlow {
 
 	private static final Logger log = LoggerFactory.getLogger(MailAgentFlow.class);
 
-	@Value("${spring.mail.username}")
-	private String fromForReply;
+	@Value("${inbound-mail.username}")
+	private String receiverName;
+
+	private final MailAgent mailAgent;
+
+	private final JavaMailSender javaMailSender;
+
+	private final InboundMailProps mailProps;
+
+	MailAgentFlow(MailAgent mailAgent, JavaMailSender javaMailSender, InboundMailProps mailProps) {
+		this.mailAgent = mailAgent;
+		this.javaMailSender = javaMailSender;
+		this.mailProps = mailProps;
+	}
 
 	@Bean
-	IntegrationFlow imapMailFlow(InboundMailProps mailProps, MailAgent mailAgent, JavaMailSender javaMailSender) {
+	IntegrationFlow imapMailFlow() {
 		var user = mailProps.username().replace("@", "%40");
 		var url = "%s://%s:%s@%s:%d/INBOX".formatted(mailProps.protocol(), user, mailProps.password(), mailProps.host(), mailProps.port());
 		return IntegrationFlow.from(Mail.imapInboundAdapter(url)
 						.shouldDeleteMessages(false)
 						.shouldMarkMessagesAsRead(true)
 						.autoCloseFolder(false), e -> e
-						.autoStartup(true)
+						.id("mailReceiverAdapter")
+						.autoStartup(false)
 						.poller(p -> p
 								.fixedDelay(120 * 1000)
 								.errorChannel("mailErrorChannel")))
@@ -70,7 +83,7 @@ class MailAgentFlow {
 
 	private SimpleMailMessage convertToMimeMessage(MailAgentContext agentContext) {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
-		mailMessage.setFrom(fromForReply);
+		mailMessage.setFrom(receiverName);
 		mailMessage.setTo(agentContext.sender);
 		mailMessage.setSubject("Re: " + agentContext.subject);
 		mailMessage.setText(agentContext.draftedReplyBody);
@@ -80,10 +93,7 @@ class MailAgentFlow {
 	@Bean
 	IntegrationFlow mailErrorFlow() {
 		return IntegrationFlow.from("mailErrorChannel")
-				.handle(message -> {
-					Throwable cause = (Throwable) message.getPayload();
-					log.error("Error processing email", cause);
-				})
+				.handle(message -> log.error("Error processing email", (Throwable) message.getPayload()))
 				.get();
 	}
 

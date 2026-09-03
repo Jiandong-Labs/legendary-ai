@@ -1,0 +1,21 @@
+spring:
+  ai:
+    deepseek:
+      api-key: dummy-key
+      chat:
+        model: deepseek-v4-flash
+  mail:
+    host: localhost
+    port: 3025
+    username: abc@com
+    password: abc
+    protocol: smtp
+    ssl:
+      enabled: false
+
+inbound-mail:
+  host: localhost
+  port: 3143
+  username: itSupport@cn
+  password: itSupport
+  protocol: imap
