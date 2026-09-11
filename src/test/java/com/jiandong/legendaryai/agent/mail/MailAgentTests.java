@@ -5,7 +5,6 @@ import com.jiandong.legendaryai.agent.mail.model.ResolverResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -25,9 +24,6 @@ class MailAgentTests {
 	@Mock
 	ChatClient.Builder chatClientBuilder;
 
-	@InjectMocks
-	MailAgent mailAgent;
-
 	@Mock
 	ChatClient chatClient;
 
@@ -36,6 +32,8 @@ class MailAgentTests {
 
 	@Mock
 	CallResponseSpec responseSpec;
+
+	MailAgent mailAgent;
 
 	@BeforeEach
 	void setUp() {
