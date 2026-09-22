@@ -24,7 +24,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-integration")
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.integration:spring-integration-mail")
-    implementation("org.simplejavamail:simple-java-mail:9.3.4")                // use mail-parser only
+    implementation("org.simplejavamail:simple-java-mail:9.3.5")                // use mail-parser only
     implementation("org.springframework.ai:spring-ai-starter-model-deepseek")
     testImplementation("org.springframework.boot:spring-boot-starter-mail-test")
     testImplementation("org.springframework.integration:spring-integration-test")
